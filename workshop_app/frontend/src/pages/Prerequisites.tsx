@@ -162,6 +162,15 @@ export default function Prerequisites({ onProgressChange }: { onProgressChange: 
         <p className="mb-8 whitespace-pre-line text-sm leading-relaxed text-muted">{data.lead_time_note}</p>
       )}
 
+      {/* Internal aside for the Databricks account team - rendered app-side only (not in the
+          customer PDF/Doc). The maturity-assessment go-link resolves only inside Databricks. */}
+      {data.internal_note && (
+        <Md
+          text={data.internal_note}
+          className="mb-8 block rounded-xl border border-navy/10 bg-oat px-4 py-3 text-xs leading-relaxed text-muted"
+        />
+      )}
+
       {/* The two `system` grants - moved here from the Walkthrough. An account/metastore admin
           runs these once; kept short on purpose (the checklist item above tracks it). */}
       <div className="mb-8 rounded-2xl border border-navy/10 bg-oat p-5">

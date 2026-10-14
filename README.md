@@ -137,11 +137,24 @@ databricks bundle run ai_governance_workshop_app -t dev -p <profile>
 ```
 
 **Prerequisites:** the Databricks CLI authenticated to the workspace, a running SQL warehouse, an
-existing Unity Catalog catalog, and Node (the bundle builds the frontend on deploy). `warehouse_id`
-and `catalog` are **required**. Two `system` schema grants (`system.ai_gateway`, `system.access`)
-need an account admin and unlock the telemetry steps — the workshop still runs without them, with
-those steps reporting "action needed" rather than failing. See
-[`workshop_app/README.md`](workshop_app/README.md) for the complete instructions.
+existing Unity Catalog catalog, and Node (the bundle builds the frontend on deploy).
+
+**Bundle variables** — passed with `--var="name=value"` on both commands above:
+
+| Variable | Required? | What it is / where to get it |
+|---|---|---|
+| `warehouse_id` | **Yes — no default.** The deploy **fails immediately** if it's missing, rather than shipping an app that errors on every step. | The SQL warehouse the app runs its live checks through. List them with `databricks warehouses list -p <profile>` (use the `ID`), or copy it from the warehouse's **Connection details** in the UI. |
+| `catalog` | **Pass your own.** Defaults to `uaigw_fe` — our internal hosted catalog, which won't exist on your workspace. | An existing Unity Catalog catalog; the app creates only its own schema inside it. |
+| `schema` | Optional — default `workshop`. | Schema the app creates for its state and progress volume. |
+| `workshop_group` | Optional — default `users`. | Group granted `CAN_USE` on the deployed app. |
+
+In practice you set `warehouse_id` (required) and `catalog` (so it points at a catalog you actually
+have); the rest can keep their defaults.
+
+Two `system` schema grants (`system.ai_gateway`, `system.access`) need an account admin and unlock
+the telemetry steps — the workshop still runs without them, with those steps reporting "action
+needed" rather than failing. See [`workshop_app/README.md`](workshop_app/README.md) for the complete
+instructions.
 
 ## Reference notebooks (`accelerators/`)
 

@@ -30,6 +30,10 @@ intro:
     New here? Start with **Prerequisites** - two `system` grants (account admin) gate the cost and
     audit steps; everything else runs without them.
 
+    Databricks team: before the day, size the opportunity with the
+    [AI governance maturity assessment](http://go/ug/maturity-assessment) (internal link - what
+    they use AI for, who they're weighing against, where spend is running away).
+
   # Step-by-step deploy guide shown on the Walkthrough. Structured (not one markdown blob) so
   # each step renders as a numbered "do this / ensure this" card. `do` and `ensure` accept
   # inline markdown (**bold**, `code`, *italics*, links); `cmd` is shown verbatim in a code box.
