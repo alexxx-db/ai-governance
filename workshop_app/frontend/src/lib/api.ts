@@ -144,6 +144,8 @@ export interface PrereqGroup {
 }
 export interface Prerequisites {
   lead_time_note?: string;
+  /** Internal-only aside for the Databricks account team (app UI only, not in the customer PDF/Doc). */
+  internal_note?: string;
   groups: PrereqGroup[];
   /** Shareable Google Doc generated from the same prerequisites.yaml (kept in sync). */
   google_doc_url?: string | null;

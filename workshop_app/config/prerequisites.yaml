@@ -28,6 +28,14 @@
 # sync by regenerating whenever this YAML changes.
 google_doc_url: https://docs.google.com/document/d/12CnGW0qXCAfrL_lH8r1vPezdQvAzm5OL4GKGVdKePPE/edit
 
+# Internal-only aside shown at the top of the Prerequisites page for the Databricks account team.
+# Deliberately NOT part of the customer-facing checklist/PDF/Doc: the go-link only resolves inside
+# Databricks, so it is rendered app-side only (not read by pdf.py or the Doc generator).
+internal_note: >-
+  **Databricks team:** before scheduling, scope the day with the
+  [AI governance maturity assessment](http://go/ug/maturity-assessment) — internal link, it won't
+  resolve outside Databricks.
+
 lead_time_note: >-
   These are the prerequisites for your AI Governance Workshop - getting them in place ahead of
   time is what lets us spend the three hours of hands-on time (plus about an hour of slides and
